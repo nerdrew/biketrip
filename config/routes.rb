@@ -1,5 +1,5 @@
 Biketrip::Application.routes.draw do
-  resources :segments, :only => [:index, :show]
+  resources :segments, :only => [:index, :show, :create]
 
   root to: 'home#index'
   # The priority is based upon order of creation:

@@ -2,16 +2,22 @@ class Segment
   include Mongoid::Document
   include Mongoid::Timestamps
 
-  field :start
-  field :finish
+  field :origin
+  field :destination
   field :waypoints, type: Array
   field :date, type: Date
-  field :lodging
+  field :overnight
   field :notes
   field :map_url
+  field :directions
+  field :elevations
 
-  index :start
-  index :finish
+  index :origin
+  index :destination
   index :date
+
+  def date
+    Time === self['date'] ? self['date'].strftime('%Y-%m-%d') : self['date']
+  end
     
 end
